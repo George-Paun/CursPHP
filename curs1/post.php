@@ -39,4 +39,5 @@
 </body>
 </html>
 <?php
-($_POST) ? var_dump($_POST) : "";
+//($_POST) ? var_dump($_POST) : "";
+(var_dump($_POST)) ?? "" ;

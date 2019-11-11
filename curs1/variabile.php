@@ -45,4 +45,4 @@
 
 //var_dump($GLOBALS);
 
-// $_GET  $_POST   
+// $_GET  $_POST  
