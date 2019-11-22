@@ -15,20 +15,23 @@
                 <a class="navbar-brand" href="#">Lista de carti</a>
             </nav>
         </div>
+<?php include('book.php');?>
         <div style="padding-top: 50px;"></div>
         <div class="container">
             <div class="row">
+<?php foreach ($books as $book):?>
                 <div class="col-6 col-sm-4 col-md-4 col-lg-4 mt-2 ">
                     <div class="card ">
-                        <img class="card-img-top" src="images/things-fall-apart.jpg" alt="Card image" style="width:100%">
+                        <img class="card-img-top"  style="height:500px" src="<?php echo $book['imageLink'];?>" alt="Card image" style="width:100%">
                         <div class="card-body">
-                            <h4 class="card-title">Things Fall Apart</h4>
-                            <h6 class="card-subtitle mb-2 text-muted">Chinua Achebe, Nigeria</h6>
-                            <p class="card-text">Language : English; Pages:209; Year: 1958</p>
-                            <a href="https://en.wikipedia.org/wiki/Things_Fall_Apart" class="btn btn-primary">Read more</a>
+                            <h4 class="card-title"><?php echo $book['title'];?></h4>
+                            <h6 class="card-subtitle mb-2 text-muted"><?php echo $book['author'];?>, <?php echo $book['country'];?></h6>
+                            <p class="card-text">Language : <?php echo $book['language'];?>; Pages:<?php echo $book['pages'];?>; Year: <?php echo $book['year'];?></p>
+                            <a href="<?php echo $book['link'];?>" class="btn btn-primary">Read more</a>
                         </div>
                     </div>
                 </div>
+<?php endforeach;?>
             </div>
         </div>
 
