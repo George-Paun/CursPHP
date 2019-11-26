@@ -63,48 +63,7 @@ function sah($nrlinii=8, $nrcoloane=8, $alb='white', $negru='black'){
 }
 sah(4,4,'magenta','green');
 sah(15,15,'magenta','yellow');
-//pom de craciun
-$levels = 5;
-for($i=0;$i<$levels;$i++){
-        for($j=0;$j<floor(($levels-$i));$j++)
-                echo "&nbsp;&nbsp;";
-        for($j=0;$j<(2*$i)-1;$j++)
-                echo "*";
 
-        echo "<br />";
-}
-
-
- ?>
-
-<script type="text/javascript">
- var a=40,b=8,c=13,o="<div style='font-family:monospace;text-align:center;color:#094'>",w=1,x=0,y="|#|<br>";for(i=1;i<a;i++){for(j=0;j<w;j++){x%c==0?o+="<span style='color:#D00'>O</span>":o+="+";x++;}i%b==0?w-=4:w+=2;o+="<br>";}document.write(o+"<span style='color:#640'>"+y+y+y+"</span></div>");
-</script>
-
-
-<pre>
-<?php
-$height=25;
-$d=1;
-$b=($height-1)*2+1;
-$f=$b;
-$e=floor($b/2);
-$a=str_pad('',$b);
-while($b>=1){
-if ($b==($height-1)*2+1){
-$a=substr_replace($a,'*',$e,1);
-echo"$a<br>";
-$a=substr_replace($a,' ',$e,1);
-}
-else {
-$e=floor($b/2);
-$a=substr_replace($a,'*',$e,1);
-$a=substr_replace($a,'*',$f-$e-1,1);
-echo"$a<br>";
-$a=str_pad('',$f);}
-$b-=2;
-}
-?></pre>
 
 <?php
 
