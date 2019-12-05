@@ -16,8 +16,6 @@ e) colorati titlul filmului dupa valoarea "color"
 
 f) afisati numele si poza actorilor din filmul respectiv
 */
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +37,7 @@ f) afisati numele si poza actorilor din filmul respectiv
 $json = file_get_contents('movies.json');
 $movies = json_decode($json,true);
 // metoda 1
-//asort($movies);
+asort($movies);
 // //metoda 2
 // function sortare_array($a, $b) { 
 //     if( $a['title'] === $b['title'] ) {
@@ -54,42 +52,57 @@ $movies = json_decode($json,true);
 // usort( $array, function( $a, $b ) {
 
 //     if( $a['title'] === $b['title'] ) {
-    
-//     	return 0;
-    	
+//     	return 0;	
 //     }
-    
-//     return ( $a['title'] < $b['title'] ) ? 1 : -1;	
-    				
+//     return ( $a['title'] < $b['title'] ) ? 1 : -1;					
 // } );
-
 ?>
         <div style="padding-top: 50px;"></div>
         <div class="container">
             <div class="row">
 <?php foreach ($movies as $movie):?>
+    <?php if($movie['year']>2010 && $movie['rating']>=4):?>
+
                 <div class="col-6 col-sm-3 col-md-3 col-lg-3 mt-2 ">
                     <div class="card ">
                         <img class="card-img-top" src="<?php echo $movie['image'];?>" alt="Card image" style="width:100%">
                         <div class="card-body">
-                            <h4 class="card-title"><?php echo $movie['title'];?></h4>
+                            <h4 class="card-title" style="color: <?php echo $movie['color'];?>"><?php echo $movie['title'];?></h4>
                             <h6 class="card-subtitle mb-2 text-muted">
 <?php 
+$x ='';
 foreach($movie['genre'] as $genre){
-    echo trim($genre.', ',',');
+    $x .=$genre.', ';
 };
 ?>
+                                <?php  echo trim($x,', ');?>
+                                
                             </h6>
                             <p class="card-text">
                                 Score : <?php echo $movie['score'];?>; 
                                 Rating:<?php echo $movie['rating'];?>; 
                                 Year: <?php echo $movie['year'];?>
+
                             </p>
-                            
+                        </div>
+                        <div class="card-footer text-muted">
+                            <div class="row ">
+<?php foreach ($movie['actor_facets'] as $k=>$actor):?>
+    <?php $act = explode('|' ,$actor);?>
+    <?php if ($k >3) break;?>   
+                                <div class="col col-3">
+                                    <img  src="<?php echo $act[0];?>" alt="<?php echo  $act[1];?>" title="<?php echo $act[1];?>">
+                                </div>
+<?php endforeach;?>
+
+                            </div>
                         </div>
                     </div>
+                        
                 </div>
+    <?php endif;?>
 <?php endforeach;?>
+
             </div>
         </div>
 
