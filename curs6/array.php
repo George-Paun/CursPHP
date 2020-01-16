@@ -97,4 +97,10 @@ print_r($n);
 
 // din acest array returnex maximul
 $max = 0;
+foreach ($n as $r){
+    if ($max <$r){
+        $max = $r;
+    }
+}
+echo $max;
 ?> 
